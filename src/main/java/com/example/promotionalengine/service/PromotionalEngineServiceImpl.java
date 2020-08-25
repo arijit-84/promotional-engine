@@ -19,9 +19,10 @@ public class PromotionalEngineServiceImpl implements PromotionalEngineService {
 	@Override
 	public String checkoutProcess(Checkout inputBody, HttpServletRequest request, HttpServletResponse response) throws Exception{	
 		String ret="";
+		Double d=0.00;
 		try {
 			List<CartItem> lst = new ArrayList<>();
-			Double d=0.00;
+			
 			for(CartItem temp:inputBody.getCartItem()) {
 				CartItem ct=new CartItem();
 				PromoRules pm = new PromoRules();
@@ -29,7 +30,6 @@ public class PromotionalEngineServiceImpl implements PromotionalEngineService {
 				ct.setItemPrice(temp.getItemPrice());
 				ct.setItemCount(temp.getItemCount());
 				
-
 				if("".equals(temp.getPromorules().getPromoCode())) {
 					
 				Double finalprice=temp.getItemCount()*temp.getItemPrice();			
@@ -81,21 +81,26 @@ public class PromotionalEngineServiceImpl implements PromotionalEngineService {
 	public PromoRules promorules(String promoCode) {
 		// TODO Auto-generated method stub
 		PromoRules pm = new PromoRules();
-		if("1101".equals(promoCode)) {
-			pm.setPromoCode(promoCode);
-			pm.setNumberOfItems(3);
-			pm.setPrice(130.00);
-			pm.setRules("Buy 3 at the price of 130");
-		}
-		else if("1102".equals(promoCode)) {
-			pm.setPromoCode(promoCode);
-			pm.setNumberOfItems(2);
-			pm.setPrice(45.00);
-			pm.setRules("Buy 2 at the price of 45");
-		}
-		else {
-			pm.setPromoCode(promoCode);
-			pm.setRules("Invalid Promo Code.");
+		try {
+			if("1101".equals(promoCode)) {
+				pm.setPromoCode(promoCode);
+				pm.setNumberOfItems(3);
+				pm.setPrice(130.00);
+				pm.setRules("Buy 3 at the price of 130");
+			}
+			else if("1102".equals(promoCode)) {
+				pm.setPromoCode(promoCode);
+				pm.setNumberOfItems(2);
+				pm.setPrice(45.00);
+				pm.setRules("Buy 2 at the price of 45");
+			}
+			else {
+				pm.setPromoCode(promoCode);
+				pm.setRules("Invalid Promo Code.");
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
 		}
 		return pm;
 	}
