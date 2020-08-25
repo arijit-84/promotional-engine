@@ -1,0 +1,40 @@
+{
+    "cartID": 43256,
+    "cartItem": [
+        {
+            "itemSKU": "A",
+            "itemCount": 7,
+            "itemPrice": 50.0,
+            "totalItemPrice": 310.0,
+            "promorules": {
+                "promoCode": "1101",
+                "numberOfItems": 3,
+                "price": 130.0,
+                "rules": "Buy 3 at the price of 130"
+            }
+        },
+        {
+            "itemSKU": "B",
+            "itemCount": 2,
+            "itemPrice": 45.0,
+            "totalItemPrice": 90.0,
+            "promorules": {
+                "promoCode": "1106",
+                "rules": "Invalid Promo Code."
+            }
+        },
+        {
+            "itemSKU": "C",
+            "itemCount": 1,
+            "itemPrice": 30.0,
+            "totalItemPrice": 30.0
+        },
+        {
+            "itemSKU": "D",
+            "itemCount": 4,
+            "itemPrice": 20.0,
+            "totalItemPrice": 80.0
+        }
+    ],
+    "checkoutPrice": 510.0
+}

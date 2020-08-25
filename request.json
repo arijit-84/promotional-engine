@@ -1,0 +1,36 @@
+{
+	"cartID": 43256,
+	"cartItem": [{
+			"itemSKU": "A",
+			"itemCount": 7,
+			"itemPrice": 50,
+			"promorules": {
+				"promoCode":1101
+			}
+		},
+		{
+			"itemSKU": "B",
+			"itemCount": 2,
+			"itemPrice": 45,
+			"promorules": {
+				"promoCode":1106
+			}
+		},
+		{
+			"itemSKU": "C",
+			"itemCount": 1,
+			"itemPrice": 30,
+			"promorules": {
+				"promoCode":null
+			}
+		},
+		{
+			"itemSKU": "D",
+			"itemCount": 4,
+			"itemPrice": 20,
+			"promorules": {
+				"promoCode":null
+			}
+		}
+	]
+}
