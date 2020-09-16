@@ -1,7 +1,9 @@
 package com.example.promotionalengine.service;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +12,11 @@ import org.springframework.stereotype.Service;
 
 import com.example.promotionalengine.model.CartItem;
 import com.example.promotionalengine.model.Checkout;
+import com.example.promotionalengine.model.CurrencyGroup;
+import com.example.promotionalengine.model.InputBody;
 import com.example.promotionalengine.model.PromoRules;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
 
 
@@ -103,5 +109,36 @@ public class PromotionalEngineServiceImpl implements PromotionalEngineService {
 			e.printStackTrace();
 		}
 		return pm;
+	}
+
+	@Override
+	public String currencyGroup(List<CurrencyGroup> inputBody, HttpServletRequest request, HttpServletResponse response) throws Exception {
+		// TODO Auto-generated method stub
+		String ret="";
+		Map<String,Integer> map=new HashMap<>();
+				for(CurrencyGroup temp:inputBody) {
+					CurrencyGroup cg=new CurrencyGroup();
+					cg.setCurrency(temp.getCurrency());
+					cg.setAmount(temp.getAmount());
+					
+					if(map.containsKey(cg.getCurrency())) {
+						int value=map.get(cg.getCurrency());
+						value=value+Integer.parseInt(cg.getAmount());
+						map.put(cg.getCurrency(), value);
+					}
+					else {
+						map.put(cg.getCurrency(), Integer.valueOf(cg.getAmount()));
+					}
+					
+				}
+				ObjectMapper objectMapper = new ObjectMapper();
+
+		        try {
+		            ret = objectMapper.writeValueAsString(map);
+		            System.out.println(ret);
+		        } catch (JsonProcessingException e) {
+		            e.printStackTrace();
+		        }
+		return ret;
 	}
 }
